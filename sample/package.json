@@ -1,0 +1,16 @@
+{
+  "name": "sample",
+  "version": "0.0.1",
+  "main": "handler.js",
+  "repository": "https://github.com/jnst/yun",
+  "author": "Jun Sato <jnst@outlook.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "co": "^4.6.0",
+    "eslint": "^4.7.2",
+    "lodash": "^4.17.4",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  }
+}
