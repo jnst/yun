@@ -27,20 +27,12 @@ provider:
   region: ap-northeast-1
 
 # you can add statements to the Lambda function's IAM Role here
-#  iamRoleStatements:
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:ListBucket"
-#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:PutObject"
-#      Resource:
-#        Fn::Join:
-#          - ""
-#          - - "arn:aws:s3:::"
-#            - "Ref" : "ServerlessDeploymentBucket"
-#            - "/*"
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 'lambda:InvokeFunction'
+      Resource:
+        - "*"
 
 # you can define service wide environment variables here
 #  environment:
@@ -59,7 +51,23 @@ functions:
   hello:
     handler: handler.hello
     memorySize: 128
-    timeout: 10
+    timeout: 60
+    vpc:
+      securityGroupIds:
+        - sg-d48a56b1
+      subnetIds:
+        - subnet-85e622f2
+        - subnet-447e6602
+  call:
+    handler: handler.call
+    memorySize: 128
+    timeout: 60
+    vpc:
+      securityGroupIds:
+        - sg-d48a56b1
+      subnetIds:
+        - subnet-85e622f2
+        - subnet-447e6602
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
